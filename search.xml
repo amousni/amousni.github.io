@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Intern2 - 稳博</title>
+      <link href="2021/05/26/Quant1/"/>
+      <url>2021/05/26/Quant1/</url>
+      
+        <content type="html"><![CDATA[<p>前段时间投了稳博的Quant实习生，今天总结一下笔试题</p><h2 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h2><img src="/2021/05/26/Quant1/1.png" class><p>这道题的思路分为三步，1、对大小为m的行进行整数分拆；2、对每一行可能的分拆情况进行前m’项求和，得到每一行的缝隙坐标；3、对n行进行判断，不能出现某一缝隙坐标出现n次的情况</p><h3 id="有序分拆"><a href="#有序分拆" class="headerlink" title="有序分拆"></a>有序分拆</h3><p>关于整数分拆，<a href="https://blog.csdn.net/u011889952/article/details/44813593">这篇文章</a>给出了很好的解答，但是需要注意的是，文章中的整数分拆是无序分拆，即</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 = 1 + 2; 3 = 2 + 1</span><br></pre></td></tr></table></figure><p>这两种情况在无序分拆中是同一种情况，而在本题中需要考虑有序分拆</p><h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><p>有序分拆之后，求出缝隙坐标就比较容易了</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> partition <span class="keyword">in</span> partition_types:</span><br><span class="line">  sum_partition = []</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(partition) == <span class="number">1</span>:</span><br><span class="line">    sum_partition.append(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(partition)):</span><br><span class="line">      sum_partition.append(<span class="built_in">str</span>(<span class="built_in">sum</span>(partition[:i])))</span><br><span class="line">  sum_partition.append(<span class="string">&#x27;&#x27;</span>.join(sum_partition))</span><br></pre></td></tr></table></figure><p>得到每一行的缝隙坐标之后，还需要根据行数进行排列组合</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">combinations = [<span class="string">&#x27;&#x27;</span>.join(x) <span class="keyword">for</span> x <span class="keyword">in</span> itertools.product(*[sum_partitions] * rows)]</span><br></pre></td></tr></table></figure><h3 id="判断缝隙"><a href="#判断缝隙" class="headerlink" title="判断缝隙"></a>判断缝隙</h3><p>之后就是判断排列组合中的是否出现某一个缝隙坐标出现的次数等于行数了，需要把0排除在外</p><h2 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h2><img src="/2021/05/26/Quant1/2.png" class><p>瞎画一通…</p><h2 id="Q3"><a href="#Q3" class="headerlink" title="Q3"></a>Q3</h2><img src="/2021/05/26/Quant1/3.png" class><p>考虑原式与下式的和，为整数</p><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span> (1-<span class="keyword">\sqrt</span>&#123;2&#125;)<span class="built_in">^</span>2021 <span class="built_in">$</span></span><br></pre></td></tr></table></figure><p>而上式是一个很接近于0的负数，所以原式的第200位是0</p><h2 id="暑期总结"><a href="#暑期总结" class="headerlink" title="暑期总结"></a>暑期总结</h2><p>到目前为止，暑期拿到了易方达的数据分析、稳博和博益安盈的Quant</p><p>华夏基金的笔试今天要做一下，还有东方红资管的行业研究等着二面。</p><p>暑期实习这一趟下来算是对接下来的秋招做了一次演练，虽然拿了一些offer，但是感觉还是很慌，太卷了，现在真的觉得当老师蛮好的，然鹅教资面试感觉有点凉凉，太紧张了，前一天也没睡好，考完教资面试回去直接病了一周，未来还是打算躺平了，小命最重要。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Quant, Intern </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>树莓派4b初体验</title>
       <link href="2021/04/28/pi4b/"/>
       <url>2021/04/28/pi4b/</url>
